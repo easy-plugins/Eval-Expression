@@ -8,6 +8,26 @@ use PHPUnit\Framework\TestCase;
  */
 class Eval_Expression_Tests extends TestCase {
 
+	public function testReadmeExamples() {
+
+		$data = [
+			'-8*(5/2)^2*(1-sqrt(4))-8' => 42,
+			'3*f(2,b)'                 => 6,
+			'3*f(42,a)'                => 4532.92746449864,
+		];
+
+		$math = new Eval_Expression();
+
+		$math->evaluate( 'a = e^(ln(pi))' );
+		$math->evaluate( 'b = 1' );
+		$math->evaluate( 'f(x,y) = x^2 + y^2 - 2*x*y + 1' );
+
+		foreach ( $data as $formula => $result ) {
+
+			$this->assertEquals( $math->evaluate( $formula ), $result );
+		}
+	}
+
 	public function testAddition() {
 
 		$math = new Eval_Expression();
