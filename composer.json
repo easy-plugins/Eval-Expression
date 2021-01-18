@@ -1,0 +1,55 @@
+{
+  "name": "easy-plugins/eval-expression",
+  "description": "Evaluate mathematical and logic expressions.",
+  "keywords": ["math", "logic", "evaluate"],
+  "type": "library",
+  "minimum-stability": "stable",
+  "license": [
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "BSD-4-Clause"
+  ],
+  "homepage": "https://github.com/easy-plugins",
+  "support": {
+    "issues": "https://github.com/easy-plugins",
+    "source": "https://github.com/easy-plugins"
+  },
+  "authors": [
+    {
+      "name": "Steven A. Zahm",
+      "homepage": "https://connections-pro.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Jakub T. Jankiewicz",
+      "homepage": "https://github.com/jcubic/expression.php",
+      "role": "Developer"
+    },
+    {
+      "name": "Josh Marshall",
+      "homepage": "https://github.com/joshbmarshall/evalmathlogic",
+      "role": "Developer"
+    },
+    {
+      "name": "Daniel Bojdo",
+      "homepage": "https://github.com/dbojdo/eval-math",
+      "role": "Developer"
+    },
+    {
+      "name": "Miles Kaufmann",
+      "homepage": "https://www.phpclasses.org/browse/author/283364.html",
+      "role": "Initial Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.2.2"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Easy_Plugins\\Eval_Expression\\": "src/"
+    }
+  }
+}
