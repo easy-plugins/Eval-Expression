@@ -15,7 +15,7 @@ $math = new Easy_Plugins\Eval_Expression;
 $result = $math->evaluate('2+2');
 
 // Supports: order of operation; parentheses; negation; built-in functions:
-$result = $math->evaluate('-8(5/2)^2*(1-sqrt(4))-8');
+$result = $math->evaluate('-8*(5/2)^2*(1-sqrt(4))-8');
 
 // Create your own variables:
 $math->evaluate('a = e^(ln(pi))');
