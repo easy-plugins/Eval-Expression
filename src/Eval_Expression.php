@@ -690,12 +690,18 @@ final class Eval_Expression_Stack {
 	 */
 	public $count = 0;
 
+	/**
+	 * @param mixed $val
+	 */
 	public function push( $val ) {
 
 		$this->stack[ $this->count ] = $val;
 		$this->count++;
 	}
 
+	/**
+	 * @return mixed|null
+	 */
 	public function pop() {
 
 		if ( $this->count > 0 ) {
@@ -707,18 +713,24 @@ final class Eval_Expression_Stack {
 		return null;
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function empty() {
 
 		return empty( $this->stack );
 	}
 
+	/**
+	 * @param int $n
+	 *
+	 * @return mixed|null
+	 */
 	public function last( $n = 1 ) {
 
-		if ( isset( $this->stack[ $this->count - $n ] ) ) {
-			return $this->stack[ $this->count - $n ];
-		}
+		$key = $this->count - $n;
 
-		return;
+		return array_key_exists( $key, $this->stack ) ? $this->stack[ $key ] : null;
 	}
 
 }
