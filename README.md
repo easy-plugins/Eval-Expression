@@ -1,10 +1,26 @@
 # DESCRIPTION
 
-Use the Eval_Expression class when you want to evaluate mathematical expressions
-from untrusted sources.	 You can define your own variables and functions,
-which are stored in the object.	 Try it, it's fun!
+Use the Eval_Expression class when you want to evaluate mathematical expressions from untrusted sources. You can define your own variables and functions, which are stored in the object. Try it, it's fun!
 
-# SYNOPSIS
+Based on the work by:
+- Miles Kaufmann <http://www.twmagic.com/>
+- Lee Eden <https://www.phpclasses.org/discuss/package/2695/thread/4/>
+- Jakub Jankiewicz <https://github.com/jcubic/expression.php>
+- Josh Marshall <https://github.com/joshbmarshall/evalmathlogic>
+
+Includes units test by:
+- Jakub Jankiewicz <https://github.com/jcubic/expression.php>
+- Josh Marshall <https://github.com/joshbmarshall/evalmathlogic>
+- Daniel Bojdo <https://github.com/dbojdo/eval-math>
+
+This library can be installed as a WordPress plugin. It adds a shortcode that can be used to evaluate expressions.
+
+Example: `[eval_expression]2+3*4[/eval_expression]`
+
+The shortcode accepts the following parameter:
+- `precision` :: The result will be rounded to the supplied integer. The default is `2`.
+
+# EXAMPLES
 
 ```php
 include 'Eval_Expression.php';
@@ -25,6 +41,14 @@ $math->evaluate('f(x,y) = x^2 + y^2 - 2x*y + 1');
 
 // Use user-defined variables and functions.
 $result = $math->evaluate('3*f(42,a)');
+
+// Use custom closures.
+$math->functions['date'] = function( $a ) {
+
+    return strtotime( $a );
+};
+
+$result = $math->evaluate("date('first day of this month 00:00:00 UTC')");
 ```
 
 # METHODS
@@ -91,4 +115,3 @@ The following logical functions have also been defined:
 - or(a,b)
 - and(a,b)
 - not(a)
-- the date(y,m,d,h,m) returns a timestamp in unix format (seconds since 1970) by utilising PHP's `strtotime()` function on "yyyy-mm-dd hh:mm:00 UTC"
