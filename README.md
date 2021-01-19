@@ -42,6 +42,12 @@ $result = $math->evaluate('2 + 2 == 4'); // true
 $result = $math->evaluate('2 + 2 < 4'); // false
 $result = $math->evaluate('2 + 2 >= 4'); // true
 
+// Support for strings and match (regexes can be like in PHP or like in JavaScript).
+$result = $math->evaluate('"Foo,Bar" =~ /^([fo]+),(bar)$/i');
+
+// Previous call will create $0 for whole match match and $1,$2 for groups.
+$result = $math->evaluate('$2'); // 'Bar'
+
 // Create your own variables:
 $math->evaluate('a = e^(ln(pi))');
 

@@ -11,13 +11,16 @@ class Eval_Expression_Tests extends TestCase {
 	public function testReadmeExamples() {
 
 		$data = [
-			'-8*(5/2)^2*(1-sqrt(4))-8'       => 42,
-			'3*f(2,b)'                       => 6,
-			'3*f(42,a)'                      => 4532.92746449864,
-			'10 < 20 || 20 > 30 && 10 == 10' => true,
-			'2 + 2 == 4'                     => true,
-			'2 + 2 < 4'                      => false,
-			'2 + 2 >= 4'                     => true,
+			'-8*(5/2)^2*(1-sqrt(4))-8'        => 42,
+			'3*f(2,b)'                        => 6,
+			'3*f(42,a)'                       => 4532.92746449864,
+			'10 < 20 || 20 > 30 && 10 == 10'  => true,
+			'2 + 2 == 4'                      => true,
+			'2 + 2 < 4'                       => false,
+			'2 + 2 >= 4'                      => true,
+			'$0'                              => 'Foo,Bar',
+			'$1'                              => 'Foo',
+			'$2'                              => 'Bar',
 		];
 
 		$math = new Expression();
@@ -25,10 +28,11 @@ class Eval_Expression_Tests extends TestCase {
 		$math->evaluate( 'a = e^(ln(pi))' );
 		$math->evaluate( 'b = 1' );
 		$math->evaluate( 'f(x,y) = x^2 + y^2 - 2*x*y + 1' );
+		$math->evaluate( '"Foo,Bar" =~ /^([fo]+),(bar)$/i' );
 
-		foreach ( $data as $formula => $result ) {
+		foreach ( $data as $formula => $expected ) {
 
-			$this->assertEquals( $math->evaluate( $formula ), $result );
+			$this->assertEquals( $expected, $math->evaluate( $formula ) );
 		}
 	}
 
