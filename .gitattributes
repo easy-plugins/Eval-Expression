@@ -1,0 +1,2 @@
+# Exclude the following from being included in the archive.
+/tests export-ignore
