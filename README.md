@@ -37,7 +37,7 @@ $result = $math->evaluate('-8*(5/2)^2*(1-sqrt(4))-8'); // 42
 // Support of booleans.
 $result = $math->evaluate('10 < 20 || 20 > 30 && 10 == 10'); // true
 
-//Supports logic.
+// Supports logic.
 $result = $math->evaluate('2 + 2 == 4'); // true
 $result = $math->evaluate('2 + 2 < 4'); // false
 $result = $math->evaluate('2 + 2 >= 4'); // true
