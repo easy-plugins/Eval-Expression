@@ -23,6 +23,7 @@
 
 namespace Easy_Plugins;
 
+use Easy_Plugins\Evaluate\Expression;
 use ReflectionException;
 
 final class Calculate {
@@ -110,7 +111,8 @@ final class Calculate {
 	 */
 	private function includeDependencies() {
 
-		require_once 'src/Eval_Expression.php';
+		require_once 'src/Evaluate/Expression.php';
+		require_once 'src/Evaluate/Stack.php';
 	}
 
 	/**
@@ -135,7 +137,7 @@ final class Calculate {
 		$content    = do_shortcode( $content );
 		$expression = strip_tags( $content );
 
-		$math   = new Eval_Expression();
+		$math   = new Expression();
 		$result = $math->evaluate( $expression );
 
 		if ( is_numeric( $result ) ) {

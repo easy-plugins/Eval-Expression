@@ -23,9 +23,10 @@ The shortcode accepts the following parameter:
 # EXAMPLES
 
 ```php
-include 'Eval_Expression.php';
+include 'Expression.php';
+include 'Stack.php';
 
-$math = new Easy_Plugins\Eval_Expression;
+$math = new Easy_Plugins\Evaluate\Expression;
 
 // Basic evaluation:
 $result = $math->evaluate('2+2');

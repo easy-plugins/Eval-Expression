@@ -1,6 +1,6 @@
 <?php
 
-namespace Easy_Plugins;
+namespace Easy_Plugins\Evaluate;
 
 use Exception;
 use ReflectionException;
@@ -12,7 +12,7 @@ use ReflectionFunction;
  * @noinspection PhpUnused
  * @package Easy_Plugins
  */
-class Eval_Expression {
+class Expression {
 
 	/**
 	 * Set to true to turn off warnings when evaluating expressions.
@@ -255,7 +255,7 @@ class Eval_Expression {
 	protected function nfx($expr) {
 
 		$index  = 0;
-		$stack  = new Eval_Expression_Stack;
+		$stack  = new Stack();
 		$output = array(); // postfix form of expression, to be passed to pfx()
 		$expr   = trim( $expr );
 
@@ -468,7 +468,7 @@ class Eval_Expression {
 			return false;
 		}
 
-		$stack = new Eval_Expression_Stack();
+		$stack = new Stack();
 
 		foreach ( $tokens as $token ) {
 
@@ -667,70 +667,6 @@ class Eval_Expression {
 		}
 
 		return false;
-	}
-
-}
-
-/**
- * Internal use only.
- *
- * Class Eval_Expression_Stack
- *
- * @package Easy_Plugins
- */
-final class Eval_Expression_Stack {
-
-	/**
-	 * @var array
-	 */
-	private $stack = array();
-
-	/**
-	 * @var int
-	 */
-	public $count = 0;
-
-	/**
-	 * @param mixed $val
-	 */
-	public function push( $val ) {
-
-		$this->stack[ $this->count ] = $val;
-		$this->count++;
-	}
-
-	/**
-	 * @return mixed|null
-	 */
-	public function pop() {
-
-		if ( $this->count > 0 ) {
-			$this->count --;
-
-			return $this->stack[ $this->count ];
-		}
-
-		return null;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function empty() {
-
-		return empty( $this->stack );
-	}
-
-	/**
-	 * @param int $n
-	 *
-	 * @return mixed|null
-	 */
-	public function last( $n = 1 ) {
-
-		$key = $this->count - $n;
-
-		return array_key_exists( $key, $this->stack ) ? $this->stack[ $key ] : null;
 	}
 
 }

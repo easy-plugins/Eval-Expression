@@ -50,7 +50,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Easy_Plugins\\Eval_Expression\\": "src/"
+      "Easy_Plugins\\Evaluate\\": "src/"
     }
   }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use Easy_Plugins\Eval_Expression;
+use Easy_Plugins\Evaluate\Expression;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +16,7 @@ class Eval_Expression_Tests extends TestCase {
 			'3*f(42,a)'                => 4532.92746449864,
 		];
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		$math->evaluate( 'a = e^(ln(pi))' );
 		$math->evaluate( 'b = 1' );
@@ -30,151 +30,151 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testAddition() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 4, $math->evaluate( '2 + 2' ) );
 	}
 
 	public function testSubtraction() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 2, $math->evaluate( '4 - 2' ) );
 	}
 
 	public function testMultiplication() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 4, $math->evaluate( '2 * 2' ) );
 	}
 
 	public function testDivision() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 2, $math->evaluate( '4 / 2' ) );
 	}
 
 	public function testAdditionFP() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 4.1, $math->evaluate( '2 + 2.1' ) );
 	}
 
 	public function testSubtractionFP() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 2.5, $math->evaluate( '4.5 - 2' ) );
 	}
 
 	public function testMultiplicationFP() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 4.5, $math->evaluate( '2.25 * 2' ) );
 	}
 
 	public function testDivisionFP() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( 4.5, $math->evaluate( '9 / 2' ) );
 	}
 
 	public function testLogicEqualsTrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 == 1' ) );
 	}
 
 	public function testLogicEqualsFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 == 2' ) );
 	}
 
 	public function testLogicNotEqualsTrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 != 1' ) );
 	}
 
 	public function testLogicNotEqualsFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 != 0' ) );
 		$this->assertSame( true, $math->evaluate( '1 != 2' ) );
 	}
 
 	public function testLogicGTTrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 > 0' ) );
 	}
 
 	public function testLogicGTFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 > 2' ) );
 	}
 
 	public function testLogicGTETrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 >= 0' ) );
 		$this->assertSame( true, $math->evaluate( '1 >= 1' ) );
 	}
 
 	public function testLogicGTEFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 >= 2' ) );
 	}
 
 	public function testLogicLTTrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 < 5' ) );
 	}
 
 	public function testLogicLTFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 < 1' ) );
 	}
 
 	public function testLogicLTETrue() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 <= 2' ) );
 		$this->assertSame( true, $math->evaluate( '1 <= 1' ) );
 	}
 
 	public function testLogicLTEFalse() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 <= 0' ) );
 	}
 
 	public function testLogicEquationEquals() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 + 1 == 2' ) );
 		$this->assertSame( false, $math->evaluate( '1 + 1 == 1' ) );
 	}
 
 	public function testLogicEquationNotEquals() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 + 1 != 2' ) );
 		$this->assertSame( true, $math->evaluate( '1 + 1 != 1' ) );
 	}
 
 	public function testLogicEquationGT() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 + 1 > 2' ) );
 		$this->assertSame( true, $math->evaluate( '1 + 1 > 1' ) );
 	}
 
 	public function testLogicEquationGTE() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( false, $math->evaluate( '1 + 1 >= 3' ) );
 		$this->assertSame( true, $math->evaluate( '1 + 1 >= 2' ) );
 		$this->assertSame( true, $math->evaluate( '1 + 1 >= 1' ) );
@@ -182,14 +182,14 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testLogicEquationLT() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 + 1 < 3' ) );
 		$this->assertSame( false, $math->evaluate( '1 + 1 < 2' ) );
 	}
 
 	public function testLogicEquationLTE() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$this->assertSame( true, $math->evaluate( '1 + 1 <= 3' ) );
 		$this->assertSame( true, $math->evaluate( '1 + 1 <= 2' ) );
 		$this->assertSame( false, $math->evaluate( '1 + 1 <= 1' ) );
@@ -201,7 +201,7 @@ class Eval_Expression_Tests extends TestCase {
 	 */
 	public function shouldSupportModuloOperator( $formula, $values, $expectedResult ) {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $values as $k => $v ) {
 			$math->v[ $k ] = $v;
@@ -237,7 +237,7 @@ class Eval_Expression_Tests extends TestCase {
 	 */
 	public function shouldConsiderDoubleMinusAsPlus( $formula, $values, $expectedResult ) {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $values as $k => $v ) {
 			$math->v[ $k ] = $v;
@@ -278,7 +278,7 @@ class Eval_Expression_Tests extends TestCase {
 	public function testIntegers() {
 
 		$ints = array( "100", "3124123", (string) PHP_INT_MAX, "-1000" );
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		for ( $i = 0; $i < count( $ints ); $i ++ ) {
 			$result = $math->evaluate( $ints[ $i ] );
@@ -290,7 +290,7 @@ class Eval_Expression_Tests extends TestCase {
 	public function testFloats() {
 
 		$ints = array( "10.10", "0.01", ".1", "1.", "-100.100", "1.10e2", "-0.10e10" );
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		for ( $i = 0; $i < count( $ints ); $i ++ ) {
 			$result = $math->evaluate( $ints[ $i ] );
@@ -300,7 +300,7 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function arrayTest( $array ) {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		for ( $i = 0; $i < count( $array ); $i ++ ) {
 			$result = $math->evaluate( $array[ $i ] );
@@ -335,7 +335,7 @@ class Eval_Expression_Tests extends TestCase {
 		$this->arrayTest( $expressions );
 
 		try {
-			$math = new Eval_Expression();
+			$math = new Expression();
 			$math->evaluate( '10/0' );
 			$this->assertTrue( false ); // will fail if evaluate don't throw exception
 		}
@@ -346,7 +346,7 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testSemicolon() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 		$result = $math->evaluate( "10+10;" );
 		$this->assertEquals( $result, "20" );
 	}
@@ -416,7 +416,7 @@ class Eval_Expression_Tests extends TestCase {
 			'("foo" == "bar") && "a" || "b"' => "b",
 		);
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $expressions as $expression => $value ) {
 
@@ -435,7 +435,7 @@ class Eval_Expression_Tests extends TestCase {
 			'2+2*2-2/2 >= 2*2+-2/2*2' => true,
 		];
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $data as $formula => $result ) {
 
@@ -454,7 +454,7 @@ class Eval_Expression_Tests extends TestCase {
 			"null != true",
 		);
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $expressions as $expression ) {
 
@@ -466,7 +466,7 @@ class Eval_Expression_Tests extends TestCase {
 
 		foreach ( $expressions as $expression => $value ) {
 
-			$math = new Eval_Expression();
+			$math = new Expression();
 			$result = $math->evaluate( $expression );
 			$result = $math->evaluate( "foo" );
 			$this->assertEquals( $result, $value );
@@ -502,7 +502,7 @@ class Eval_Expression_Tests extends TestCase {
 			'"foo\\"bar" + "baz"' => "foo\"barbaz",
 		);
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $expressions as $expression => $value ) {
 
@@ -525,7 +525,7 @@ class Eval_Expression_Tests extends TestCase {
 
 		foreach ( $expressions as $expression => $group ) {
 
-			$math = new Eval_Expression();
+			$math = new Expression();
 
 			$result = $math->evaluate( $expression );
 
@@ -554,7 +554,7 @@ class Eval_Expression_Tests extends TestCase {
 
 		foreach ( $expressions as $expression => $object ) {
 
-			$math = new Eval_Expression();
+			$math = new Expression();
 
 			$math->evaluate( $expression );
 			$this->assertEquals( $math->evaluate( $object['var'] ), $object['value'] );
@@ -563,7 +563,7 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testVariables() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		$math->v += [
 			'f_price'                 => 500,
@@ -587,7 +587,7 @@ class Eval_Expression_Tests extends TestCase {
 			array( 10, array( "foo" => "bar" ), 30 ),
 		);
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		foreach ( $expressions as $expression ) {
 
@@ -655,7 +655,7 @@ class Eval_Expression_Tests extends TestCase {
 
 		foreach ( $functions as $function => $object ) {
 
-			$math = new Eval_Expression();
+			$math = new Expression();
 
 			$math->evaluate( $function );
 
@@ -668,7 +668,7 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testCustomClosures() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		$math->functions['even'] = function( $a ) {
 
@@ -685,7 +685,7 @@ class Eval_Expression_Tests extends TestCase {
 
 	public function testCustomClosureDate() {
 
-		$math = new Eval_Expression();
+		$math = new Expression();
 
 		$math->functions['date'] = function( $a ) {
 
