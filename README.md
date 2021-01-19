@@ -15,7 +15,7 @@ Includes units test by:
 
 This library can be installed as a WordPress plugin. It adds a shortcode that can be used to evaluate expressions.
 
-Example: `[eval_expression]2+3*4[/eval_expression]`
+Example: `[eval]2+3*4[/eval]`
 
 The shortcode accepts the following parameter:
 - `precision` :: The result will be rounded to the supplied integer. The default is `2`.

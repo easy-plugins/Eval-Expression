@@ -103,7 +103,7 @@ final class Calculate {
 	 */
 	private function hooks() {
 
-		add_shortcode( 'eval_expression', array( __CLASS__, 'shortcode' ) );
+		add_shortcode( 'eval', array( __CLASS__, 'shortcode' ) );
 	}
 
 	/**
