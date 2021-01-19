@@ -84,7 +84,6 @@ class Eval_Expression {
 		'abs',
 		'ln',
 		'log',
-		'date',
 	);
 
 	/**
