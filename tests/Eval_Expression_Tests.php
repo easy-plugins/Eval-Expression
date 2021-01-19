@@ -682,4 +682,26 @@ class Eval_Expression_Tests extends TestCase {
 			$this->assertEquals( (bool) $math->evaluate( "even($number)" ), $value );
 		}
 	}
+
+	public function testCustomClosureDate() {
+
+		$math = new Eval_Expression();
+
+		$math->functions['date'] = function( $a ) {
+
+			return strtotime( $a );
+		};
+
+		$firstDayThisMonth = strtotime( 'first day of this month 00:00:00 UTC' );
+
+		$values = array(
+			968544000          => '10 September 2000 00:00:00 UTC',
+			$firstDayThisMonth => 'first day of this month 00:00:00 UTC',
+		);
+
+		foreach ( $values as $timestamp => $string ) {
+
+			$this->assertEquals( $timestamp, $math->evaluate( "date('{$string}')" ) );
+		}
+	}
 }
