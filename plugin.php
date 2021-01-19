@@ -111,8 +111,8 @@ final class Calculate {
 	 */
 	private function includeDependencies() {
 
-		require_once 'src/Evaluate/Expression.php';
-		require_once 'src/Evaluate/Stack.php';
+		require_once dirname( __FILE__ ) . '/src/Evaluate/Expression.php';
+		require_once dirname( __FILE__ ) . '/src/Evaluate/Stack.php';
 	}
 
 	/**
