@@ -11,9 +11,13 @@ class Eval_Expression_Tests extends TestCase {
 	public function testReadmeExamples() {
 
 		$data = [
-			'-8*(5/2)^2*(1-sqrt(4))-8' => 42,
-			'3*f(2,b)'                 => 6,
-			'3*f(42,a)'                => 4532.92746449864,
+			'-8*(5/2)^2*(1-sqrt(4))-8'       => 42,
+			'3*f(2,b)'                       => 6,
+			'3*f(42,a)'                      => 4532.92746449864,
+			'10 < 20 || 20 > 30 && 10 == 10' => true,
+			'2 + 2 == 4'                     => true,
+			'2 + 2 < 4'                      => false,
+			'2 + 2 >= 4'                     => true,
 		];
 
 		$math = new Expression();
