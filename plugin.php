@@ -1,14 +1,14 @@
 <?php
 /**
-* Eval Expression
+* Evaluate Expression
 *
-* @package           Eval Expression
+* @package           Evaluate Expression
 * @author            Steven A. Zahm
 * @copyright         2021 Steven A. Zahm
 * @license           GPL-2.0-or-later
 *
 * @wordpress-plugin
-* Plugin Name:       Eval Expression Library
+* Plugin Name:       Evaluate Expression Library + Shortcode
 * Plugin URI:        https://connections-pro.com
 * Description:       The Eval Expression Library. Can be utilized in the Code Snippet plugin.
 * Version:           1.0.0
